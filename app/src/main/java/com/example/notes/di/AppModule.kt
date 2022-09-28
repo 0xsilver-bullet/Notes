@@ -2,6 +2,7 @@ package com.example.notes.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.notes.feature_notelist.data.local.NoteDao
 import com.example.notes.feature_notelist.data.local.NoteDatabase
 import dagger.Module
 import dagger.Provides
@@ -24,5 +25,11 @@ object AppModule {
                 "NoteDB.db"
             )
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideNoteDao(noteDatabase: NoteDatabase): NoteDao {
+        return noteDatabase.noteDao
     }
 }
