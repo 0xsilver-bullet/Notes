@@ -4,6 +4,10 @@ import android.content.Context
 import androidx.room.Room
 import com.example.notes.feature_notelist.data.local.NoteDao
 import com.example.notes.feature_notelist.data.local.NoteDatabase
+import com.example.notes.feature_notelist.domain.repository.NoteRepository
+import com.example.notes.feature_notelist.domain.use_case.DeleteNoteUseCase
+import com.example.notes.feature_notelist.domain.use_case.GetNotesUseCase
+import com.example.notes.feature_notelist.domain.use_case.NoteUseCases
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,5 +35,14 @@ object AppModule {
     @Singleton
     fun provideNoteDao(noteDatabase: NoteDatabase): NoteDao {
         return noteDatabase.noteDao
+    }
+
+    @Provides
+    @Singleton
+    fun provideNotesUseCases(repository: NoteRepository): NoteUseCases {
+        return NoteUseCases(
+            getNotes = GetNotesUseCase(repository),
+            deleteNotes = DeleteNoteUseCase(repository)
+        )
     }
 }
