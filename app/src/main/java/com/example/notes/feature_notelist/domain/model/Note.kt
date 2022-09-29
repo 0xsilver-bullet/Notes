@@ -7,3 +7,5 @@ data class Note(
     val color: Int,
     val id: Int?
 )
+
+class InvalidNoteException(message: String): Exception(message)
