@@ -15,7 +15,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             NotesTheme {
                 val navController = rememberNavController()
-                //NotesAppNavHost(navController = navController)
+                NotesAppNavHost(navController = navController)
             }
         }
     }
