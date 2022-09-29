@@ -11,14 +11,4 @@ data class NoteEntity(
     val timeStamp: Long,
     val color: Int,
     @PrimaryKey(autoGenerate = true) val id: Int? = null
-) {
-    companion object {
-        val noteColors = listOf(
-            RedOrange,
-            LightGreen,
-            Violet,
-            BabyBlue,
-            RedPink
-        )
-    }
-}
+)
